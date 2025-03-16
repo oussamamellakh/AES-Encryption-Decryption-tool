@@ -25,10 +25,12 @@ The tool follows industry-standard encryption practices:
 - The password is combined with a random salt
 - PBKDF2 applies 100,000 iterations of HMAC-SHA256
 - This produces a cryptographically strong 256-bit key
+  
 2. **Salt Generation**: A random salt is generated to prevent dictionary attacks
 - Each encryption operation gets a unique salt
 - This ensures identical passwords produce different encryption keys
 - The salt is stored alongside the encrypted data for decryption
+  
 3. **AES Encryption**: The Fernet implementation (AES-128 in CBC mode with PKCS7 padding) encrypts your data
 - The data is divided into 16-byte (128-bit) blocks
 - A random Initialization Vector (IV) is generated
@@ -40,18 +42,22 @@ The tool follows industry-standard encryption practices:
     - The result is encrypted with the AES algorithm
 - This chaining mechanism ensures that identical plaintext blocks encrypt differently
 - Any change in one block affects all subsequent blocks, enhancing security
+  
 4. **PKCS7 Padding**: Since AES requires complete blocks
 - The final block is padded to reach the full 16-byte size
 - PKCS7 padding adds bytes with a value equal to the padding length
 - This padding is automatically removed during decryption
+  
 5. **Message Authentication**: To prevent tampering
 - An HMAC-SHA256 is calculated over the ciphertext
 - This serves as a cryptographic signature
 - During decryption, the HMAC is verified before processing
+  
 6. **Storage Format**: Encrypted data is stored with its salt to enable later decryption
 - The salt length (1 byte) is stored first
 - Followed by the salt itself
 - Then the complete Fernet-formatted encrypted message
+  
 7. **Decryption Process**: Reverses the process using the same password and salt
 - The salt is extracted from the stored data
 - The same PBKDF2 process regenerates the identical key
