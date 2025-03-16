@@ -95,7 +95,7 @@ The tool follows industry-standard encryption practices:
 Simply run the script without any arguments for a guided experience:
 
 ```
-python aes_encryption_tool.py
+python aes_encryption_decryption_tool.py
 ```
 
 You'll see a menu with four options:
@@ -111,7 +111,7 @@ Follow the prompts to complete your desired operation.
 For advanced usage and automation, use the command-line interface:
 
 ```
-python aes_encryption_tool.py [-h] (-e | -d) [-i INPUT] [-o OUTPUT] [-p PASSWORD] [-t]
+python aes_encryption_decryption_tool.py [-h] (-e | -d) [-i INPUT] [-o OUTPUT] [-p PASSWORD] [-t]
 ```
 
 Arguments:
@@ -127,23 +127,23 @@ Arguments:
 
 **Encrypt a text message:**
 ```
-python aes_encryption_tool.py -e -t -p "your_secure_password" -i "This is a secret message"
+python aes_encryption_decryption_tool.py -e -t -p "your_secure_password" -i "This is a secret message"
 ```
 
 **Decrypt a text message:**
 ```
-python aes_encryption_tool.py -d -t -p "your_secure_password"
+python aes_encryption_decryption_tool.py -d -t -p "your_secure_password"
 ```
 (You'll be prompted to enter the encrypted text and salt)
 
 **Encrypt a file:**
 ```
-python aes_encryption_tool.py -e -i important_document.pdf -o encrypted_document.enc -p "your_secure_password"
+python aes_encryption_decryption_tool.py -e -i important_document.pdf -o encrypted_document.enc -p "your_secure_password"
 ```
 
 **Decrypt a file:**
 ```
-python aes_encryption_tool.py -d -i encrypted_document.enc -o decrypted_document.pdf -p "your_secure_password"
+python aes_encryption_decryption_tool.py -d -i encrypted_document.enc -o decrypted_document.pdf -p "your_secure_password"
 ```
 
 ## Understanding the Output
